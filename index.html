@@ -2,411 +2,150 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Acceso | Telcel</title>
+
   <style>
     :root {
       --blue: #0b3f9f;
-      --blue-dark: #001d6e;
-      --cyan: #6fd3d8;
-      --text: #2f3a4b;
-      --card: rgba(255,255,255,0.92);
-      --shadow: 0 14px 32px rgba(44, 72, 116, 0.18);
-      --pill-shadow: 0 6px 14px rgba(0,0,0,0.12);
     }
-
-    * { box-sizing: border-box; }
 
     body {
       margin: 0;
-      min-height: 100vh;
-      font-family: Arial, Helvetica, sans-serif;
-      background: #efefef;
-      color: var(--text);
-    }
-
-    .page {
-      max-width: 1440px;
-      margin: 10px auto;
-      padding: 0 10px;
-    }
-
-    .hero {
-      position: relative;
-      min-height: 560px;
-      border-radius: 18px;
-      overflow: hidden;
-      background:
-        linear-gradient(rgba(222,232,245,0.82), rgba(222,232,245,0.82)),
-        url('https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
-      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.45), 0 10px 30px rgba(42, 66, 97, 0.08);
-    }
-
-    .hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(circle at 15% 20%, rgba(255,255,255,0.55), transparent 28%),
-        radial-gradient(circle at 80% 18%, rgba(255,255,255,0.4), transparent 22%),
-        radial-gradient(circle at 88% 64%, rgba(255,255,255,0.34), transparent 18%),
-        radial-gradient(circle at 12% 82%, rgba(255,255,255,0.22), transparent 18%);
-      pointer-events: none;
-    }
-
-    .topbar {
-      position: absolute;
-      inset: 22px 30px auto 30px;
+      font-family: Arial, sans-serif;
+      background: #eef2f7;
       display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      z-index: 2;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
     }
 
-    .brand-left {
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-      color: var(--blue);
-      font-weight: 700;
-    }
-
-    .brand-left .ic-mark {
-      font-size: 54px;
-      line-height: 0.82;
-      font-weight: 800;
-      letter-spacing: -3px;
-    }
-
-    .brand-left .ic-text {
-      font-size: 16px;
-      line-height: 0.95;
-      margin-top: 14px;
-      text-transform: lowercase;
-    }
-
-    .brand-right {
-      color: var(--blue);
-      font-size: 56px;
-      font-style: italic;
-      font-weight: 800;
-      line-height: 1;
-      letter-spacing: -2px;
-    }
-
-    .login-card {
-      position: relative;
-      z-index: 2;
+    .card {
+      background: rgba(255,255,255,0.95);
+      border-radius: 20px;
+      padding: 40px 30px;
       width: 100%;
-      max-width: 480px;
-      margin: 110px auto 0;
-      background: rgba(255,255,255,0.92);
-      border-radius: 22px;
-      box-shadow: 0 14px 32px rgba(44, 72, 116, 0.12);
-      padding: 32px 30px 22px;
+      max-width: 420px;
       text-align: center;
-      backdrop-filter: blur(6px);
-      border: 1px solid rgba(255,255,255,0.6);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
     }
 
-    .login-card h1 {
-      margin: 0;
+    h1 {
+      font-size: 26px;
+      margin-bottom: 10px;
       color: var(--blue);
-      font-size: 42px;
-      line-height: 1.02;
-      font-weight: 400;
-      letter-spacing: -0.8px;
     }
 
-    .login-card h1 strong {
+    h1 strong {
       display: block;
-      font-size: 54px;
+      font-size: 32px;
       font-weight: 800;
-      margin-top: 4px;
     }
 
-    .login-card .subtitle {
-      margin: 18px auto 26px;
-      max-width: 520px;
-      font-size: 16px;
-      line-height: 1.22;
-      color: #58606a;
+    p {
+      font-size: 14px;
+      color: #666;
+      margin-bottom: 25px;
     }
 
-    .form-area {
+    input {
       width: 100%;
-      max-width: 380px;
-      margin: 0 auto;
-    }
-
-    .field {
-      width: 100%;
-      height: 46px;
-      border: none;
+      height: 44px;
       border-radius: 999px;
-      padding: 0 22px;
+      border: none;
       margin-bottom: 12px;
-      background: linear-gradient(90deg, #3561b5 0%, #73d1d6 100%);
-      color: white;
+      padding: 0 20px;
       text-align: center;
-      font-size: 15px;
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.18);
+      background: linear-gradient(90deg, #3c63b5, #6fd3d8);
+      color: white;
+      font-size: 14px;
     }
 
-    .field::placeholder {
-      color: rgba(255,255,255,0.96);
-    }
-
-    .field:focus {
-      outline: none;
-      box-shadow: 0 0 0 3px rgba(11,63,159,0.15), inset 0 1px 0 rgba(255,255,255,0.22);
+    input::placeholder {
+      color: rgba(255,255,255,0.9);
     }
 
     .submit {
+      position: relative;
       width: 100%;
-      height: 50px;
-      border: none;
+      height: 48px;
       border-radius: 999px;
-      color: #fff;
-      font-size: 18px;
-      font-weight: 700;
+      border: none;
+      background: linear-gradient(90deg, #06359c, #00094f);
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
       cursor: pointer;
-      box-shadow: 0 8px 16px rgba(3, 20, 84, 0.2);
-      letter-spacing: 0.2px;
-      margin-top: 8px;
+      margin-top: 10px;
     }
 
-    .submit.microsoft {
-      background: linear-gradient(90deg, #06359c 0%, #00094f 100%);
-    }
-
-    .submit:hover {
-      filter: brightness(0.98);
+    /* divisor invisible */
+    .submit::after {
+      content: '';
+      position: absolute;
+      top: 20%;
+      bottom: 20%;
+      left: 50%;
+      width: 1px;
+      background: rgba(255,255,255,0.25);
     }
 
     .recover {
-      display: inline-block;
-      margin-top: 16px;
+      display: block;
+      margin-top: 14px;
+      font-size: 13px;
       color: var(--blue);
-      font-size: 16px;
-      text-decoration: underline;
-    }
-
-    .apps-row {
-      position: relative;
-      z-index: 2;
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 18px;
-      margin: 36px auto 22px;
-      padding: 0 24px;
-      max-width: 1180px;
-    }
-
-    .app-pill {
-      min-width: 150px;
-      max-width: 176px;
-      min-height: 50px;
-      padding: 11px 14px;
-      background: rgba(255,255,255,0.96);
-      border-radius: 999px;
-      box-shadow: 0 8px 18px rgba(52, 68, 96, 0.1);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      color: #4e49a8;
-      font-size: 15px;
-      line-height: 1.06;
-      font-weight: 500;
-      border: 1px solid rgba(255,255,255,0.65);
-    }
-
-    .footer-links {
-      max-width: 1180px;
-      margin: 0 auto 12px;
-      display: grid;
-      gap: 8px;
-      padding: 0 18px 12px;
-    }
-
-    .footer-bar {
-      background: #e8e8e8;
-      color: #6a6a6a;
-      border-radius: 8px;
-      min-height: 30px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 15px;
-      text-align: center;
-      text-decoration: none;
-    }
-
-    .footer-bar.highlight {
-      color: #19bfe6;
-    }
-
-    .tech-note {
-      display: none;
-    }
-
-    @media (max-width: 980px) {
-      .brand-left .ic-mark { font-size: 44px; }
-      .brand-left .ic-text { font-size: 14px; margin-top: 12px; }
-      .brand-right { font-size: 44px; }
-      .hero { min-height: 520px; }
-      .login-card {
-        max-width: 92%;
-        padding: 32px 24px 22px;
-        margin-top: 84px;
-      }
-      .login-card h1 { font-size: 34px; }
-      .login-card h1 strong { font-size: 42px; }
-      .login-card .subtitle { font-size: 15px; }
-      .apps-row { gap: 14px; }
-    }
-      .brand-left .ic-text { font-size: 15px; margin-top: 14px; }
-      .brand-right { font-size: 50px; }
-      .login-card {
-        max-width: 94%;
-        padding: 34px 24px 22px;
-        margin-top: 92px;
-      }
-      .login-card h1 { font-size: 42px; }
-      .login-card h1 strong { font-size: 46px; }
-      .login-card .subtitle { font-size: 16px; }
-      .apps-row { gap: 16px; }
-    }
-
-    @media (max-width: 680px) {
-      .topbar {
-        inset: 16px 16px auto 16px;
-      }
-      .brand-right { font-size: 34px; }
-      .hero { min-height: 500px; }
-      .login-card {
-        margin-top: 76px;
-        border-radius: 22px;
-      }
-      .login-card h1 { font-size: 28px; }
-      .login-card h1 strong { font-size: 36px; }
-      .field, .submit { font-size: 16px; }
-      .apps-row { margin-top: 28px; }
-      .app-pill { min-width: 132px; font-size: 14px; }
-      .footer-bar { font-size: 14px; }
-    }
-      .brand-right { font-size: 40px; }
-      .login-card h1 { font-size: 34px; }
-      .login-card h1 strong { font-size: 38px; }
-      .field, .submit { font-size: 18px; }
-      .apps-row { margin-top: 34px; }
-      .app-pill { min-width: 140px; font-size: 16px; }
-      .footer-bar { font-size: 15px; }
     }
   </style>
 </head>
+
 <body>
-  <div class="page">
-    <section class="hero">
-      <div class="topbar">
-        <div class="brand-left">
-          <div class="ic-mark">ic</div>
-          <div class="ic-text">intranet<br>corporativa</div>
-        </div>
-        <div class="brand-right">telcel</div>
-      </div>
 
-      <div class="login-card">
-        <h1>Bienvenido al lugar <strong>donde nos conectamos</strong></h1>
-        <div class="subtitle">
-          Este es nuestro punto de encuentro de información,<br>
-          apoyo y comunidad para impulsar tu día.
-        </div>
+<div class="card">
+  <h1>Bienvenido al lugar <strong>donde nos conectamos</strong></h1>
 
-        <div class="form-area">
-          <input id="emailPreview" class="field" type="email" placeholder="Usuario" />
-          <input class="field" type="password" placeholder="Contraseña" />
-          <button type="button" class="submit microsoft" id="loginButton">Iniciar sesión</button>
-          <a class="recover" href="#" onclick="event.preventDefault(); goToLumApps('email');">Recuperar contraseña</a>
-        </div>
-      </div>
+  <p>
+    Este es nuestro punto de encuentro de información,<br>
+    apoyo y comunidad para impulsar tu día.
+  </p>
 
-      <div class="apps-row">
-        <div class="app-pill">@Doc</div>
-        <div class="app-pill">Inventario<br>de RH</div>
-        <div class="app-pill">Recibo<br>electrónico</div>
-        <div class="app-pill">Monitor<br>de registros</div>
-        <div class="app-pill">Sistema<br>de incidencias</div>
-        <div class="app-pill">Sistema<br>de vacaciones</div>
-      </div>
-    </section>
+  <input id="email" type="email" placeholder="Usuario"/>
+  <input type="password" placeholder="Contraseña"/>
 
-    <div class="footer-links">
-      <a class="footer-bar" href="#" onclick="event.preventDefault();">Aviso de privacidad</a>
-      <a class="footer-bar" href="#" onclick="event.preventDefault();">Código de ética</a>
-      <a class="footer-bar highlight" href="#" onclick="event.preventDefault();">Portal de denuncias</a>
-    </div>
-  </div>
+  <button id="loginBtn" class="submit">Iniciar sesión</button>
 
-  <script>
-    const LUMAPPS_PLATFORM_URL = 'https://intranet-ia-demo-platform.app.lumapps.com/telcel-demo/';
+  <a class="recover" href="#">Recuperar contraseña</a>
+</div>
 
-    function getNextUrl() {
-      const params = new URLSearchParams(window.location.search);
-      return params.get('nextUrl') || (LUMAPPS_PLATFORM_URL + '/');
+<script>
+  const LUMAPPS_PLATFORM_URL = 'https://intranet-ia-demo-platform.app.lumapps.com/telcel-demo/';
+
+  function getNextUrl() {
+    const params = new URLSearchParams(window.location.search);
+    return params.get('nextUrl') || (LUMAPPS_PLATFORM_URL + '/');
+  }
+
+  function goToLumApps(method) {
+    const nextUrl = getNextUrl();
+    const url = `${LUMAPPS_PLATFORM_URL}/login?from=${method}&nextUrl=${encodeURIComponent(nextUrl)}`;
+    window.location.href = url;
+  }
+
+  document.getElementById('loginBtn').addEventListener('click', function(e) {
+    const rect = this.getBoundingClientRect();
+    const clickX = e.clientX - rect.left;
+
+    let method;
+
+    if (clickX < rect.width / 2) {
+      method = 'google';      // izquierda
+    } else {
+      method = 'microsoft';   // derecha
     }
 
-    function goToLumApps(method) {
-      const nextUrl = getNextUrl();
-      const target = `${LUMAPPS_PLATFORM_URL}/login?from=${encodeURIComponent(method)}&nextUrl=${encodeURIComponent(nextUrl)}`;
-      window.location.href = target;
-    }
+    goToLumApps(method);
+  });
+</script>
 
-    function detectLoginMethod(email) {
-      const cleanEmail = (email || '').trim().toLowerCase();
-      const googleDomains = ['gmail.com', 'googlemail.com'];
-      const domain = cleanEmail.includes('@') ? cleanEmail.split('@')[1] : '';
-
-      if (googleDomains.includes(domain)) {
-        return 'google';
-      }
-
-      return 'microsoft';
-    }
-
-    function routeLogin() {
-      const emailInput = document.getElementById('emailPreview');
-      if (!emailInput) return;
-
-      const emailValue = emailInput.value || '';
-      const method = detectLoginMethod(emailValue);
-      goToLumApps(method);
-    }
-
-    document.addEventListener('DOMContentLoaded', function () {
-      const emailInput = document.getElementById('emailPreview');
-      const loginButton = document.getElementById('loginButton');
-
-      if (emailInput) {
-        emailInput.value = '';
-        emailInput.setAttribute('data-nexturl', getNextUrl());
-        emailInput.addEventListener('keydown', function (event) {
-          if (event.key === 'Enter') {
-            event.preventDefault();
-            routeLogin();
-          }
-        });
-      }
-
-      if (loginButton) {
-        loginButton.addEventListener('click', function (event) {
-          event.preventDefault();
-          routeLogin();
-        });
-      }
-    });
-  </script>
 </body>
 </html>
